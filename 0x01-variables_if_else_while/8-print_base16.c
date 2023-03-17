@@ -6,9 +6,9 @@
   */
 int main(void)
 {
-	int i = 0;
+	int i = 1;
 
-	for (i; i < 16; i++)
+	for (i = 0; i < 16; i++)
 	{
 		if (i < 10)
 			putchar(i + '0');
