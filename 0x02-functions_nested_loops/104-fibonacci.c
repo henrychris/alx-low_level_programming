@@ -14,10 +14,10 @@ int main(void)
 	printf("1, ");
 	printf("2, ");
 
-	while (print_count < 98)
+	while (print_count < 97)
 	{
 		next = prev + curr;
-		if (print_count != 97)
+		if (print_count != 96)
 		{
 			printf("%.0f, ", next);
 		}
