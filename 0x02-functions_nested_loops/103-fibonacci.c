@@ -23,6 +23,6 @@ int main(void)
 		prev = curr;
 		curr = next;
 	}
-	printf("%.0f\n", sum);
+	printf("%.0f\n", sum + 2);
 	return (0);
 }
