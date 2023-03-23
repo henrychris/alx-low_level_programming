@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * mul - a function that multiplies two integers.
  * @a: the  numbers being added
