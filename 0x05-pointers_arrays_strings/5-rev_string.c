@@ -9,7 +9,7 @@ void rev_string(char *s)
 {
 	int length = _strlen(s);
 	int max_size = length + 1;
-	char new_string[100];
+	char new_string[520];
 	char c;
 	int i = 0, j;
 
