@@ -28,12 +28,13 @@ int _strlen(char *s)
  */
 void puts_half(char *str)
 {
-	int length = strlen(str);
+	int length = _strlen(str);
 	int print_start = length % 2 == 0 ? length / 2 : (length + 1) / 2;
+	int i = 0;
 
-	for (int i = print_start; i < length; i++)
+	for (i = print_start; i < length; i++)
 	{
-		putchar(*(str + i));
+		_putchar(*(str + i));
 	}
-	putchar('\n');
+	_putchar('\n');
 }
