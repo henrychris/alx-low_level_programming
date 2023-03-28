@@ -28,44 +28,12 @@ int _strlen(char *s)
  */
 void puts_half(char *str)
 {
-	int length = _strlen(str);
-	int print_start;
-	int isodd;
-	char c = *str;
+	int length = strlen(str);
+	int print_start = length % 2 == 0 ? length / 2 : (length + 1) / 2;
 
-	/**
-	 * basically, start printing from that point
-	 *  for even nums, start at half
-	 * for odd, print_start = how many last n digits are we printing
-	 */
-	print_start = length % 2 == 0 ? length / 2 : (length - 1) / 2;
-	/* is odd helps track even or odd */
-	isodd = length % 2 == 0 ? 0 : 1;
-
-	if (isodd)
+	for (int i = print_start; i < length; i++)
 	{
-		while (c != '\0')
-		{
-			/**
-			 * c = the item at where we start printing from
-			 * e.g. if we print last 4 for an array of 10
-			 * we start at 10 - 4 = 6
-			 */
-			c = *(str + (length - print_start));
-			_putchar(c);
-			/* as print_start reduces, we move forward */
-			print_start--;
-		}
+		putchar(*(str + i));
 	}
-	else
-	{
-		while (print_start != length)
-		{
-			/* we start at the halfwqay point */
-			c = *(str + print_start);
-			_putchar(c);
-			print_start++;
-		}
-	}
-	_putchar('\n');
+	putchar('\n');
 }
