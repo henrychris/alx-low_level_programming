@@ -8,10 +8,10 @@
 void rev_string(char *s)
 {
 	int length = _strlen(s);
-	char new_string[length + 1];
 	int max_size = length + 1;
+	char new_string[100];
 	char c;
-	int i = 0;
+	int i = 0, j;
 
 	while (length > 0 && i < max_size)
 	{
@@ -22,7 +22,7 @@ void rev_string(char *s)
 	}
 
 	/* Copy reversed string into original*/
-	for (int j = 0; j < i; j++)
+	for (j = 0; j < i; j++)
 	{
 		*(s + j) = new_string[j];
 	}
