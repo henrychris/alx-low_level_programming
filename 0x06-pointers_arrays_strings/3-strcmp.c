@@ -8,37 +8,20 @@
  */
 int _strcmp(char *s1, char *s2)
 {
-	int i;
-	/* at this point it checks length to save on iteration*/
-	int check = _strlen(s1) == _strlen(s2) ? 0 :
-		(_strlen(s1) > _strlen(s2) ? 1 : -1);
+	int i = 0;
 
-
-	if (check != 0)
+	/* Compare each character in both strings */
+	while (*(s1 + i) != '\0' && *(s2 + i) != '\0')
 	{
-		return (check);
-	}
-
-	for (i = 0; *(s1 + i) != '\0' && *(s2 + i) != '\0'; i++)
-	{
-		if (*(s1 + i) > *(s2 + i))
+		if (*(s1 + i) != *(s2 + i))
 		{
-			return (1);
+			/* If characters differ, return the difference */
+			return (*(s1 + i) - *(s2 + i));
 		}
-		else if (*(s1 + i) < *(s2 + i))
-			return (-1);
+		i++;
 	}
-
-	if (*(s1 + i) == '\0')
-	{
-		return (-1);
-	}
-	else if (*(s2 + i) == '\0')
-	{
-		return (1);
-	}
-
-	return (0);
+	/* If they get to this point, the strings are prob the same*/
+	return (*(s1 + i) - *(s2 + i));
 }
 
 /**
