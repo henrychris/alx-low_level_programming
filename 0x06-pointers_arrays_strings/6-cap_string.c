@@ -55,20 +55,21 @@ int _strlen(char *s)
  */
 char *cap_string(char *s)
 {
-	int i = 1;
-	char prev;
+	int i;
 
-	for (; i < _strlen(s); i++)
+	for (i = 0; i < _strlen(s); i++)
 	{
-		prev = *(s + i - 1);
-		if (is_separator(prev))
+		if (i == 0 && *(s + i) >= 97 && *(s + i) <= 122)
 		{
-			if (*(s + i) >= 97 && *(s + i) <= 122)
+			*(s + i) = (char)(*(s + i) - 97) + 65;
+		}
+		if (is_separator(*(s + i)))
+		{
+			if (*(s + i + 1) >= 97 && *(s + i + 1) <= 122)
 			{
-				*(s + i) = (*(s + i) - 97) + 65;
+				*(s + i + 1) = (char)(*(s + i + 1) - 97) + 65;
 			}
 		}
 	}
-
 	return (s);
 }
