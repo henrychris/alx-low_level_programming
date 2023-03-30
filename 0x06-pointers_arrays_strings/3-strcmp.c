@@ -10,9 +10,11 @@ int _strcmp(char *s1, char *s2)
 {
 	int i;
 	/* at this point it checks length to save on iteration*/
-	int check = _strlen(s1) > _strlen(s2) ? 1 : -1;
+	int check = _strlen(s1) == _strlen(s2) ? 0 :
+		(_strlen(s1) > _strlen(s2) ? 1 : -1);
 
-	if (!check)
+
+	if (check != 0)
 	{
 		return (check);
 	}
