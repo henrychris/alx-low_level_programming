@@ -15,12 +15,8 @@ char *leet(char *s)
 	{
 		for (j = 0; j < 10; j++)
 		{
-			if (*(s + i) == letters[j])
+			for (j = 0; j < 10; j++)
 			{
-				/*
-				* integer division means it's rounded to the position
-				* close to it
-				*/
 				if (letters[j] == *(s + i))
 					*(s + i) = numbers[j];
 			}
