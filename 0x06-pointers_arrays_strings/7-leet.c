@@ -21,7 +21,8 @@ char *leet(char *s)
 				* integer division means it's rounded to the position
 				* close to it
 				*/
-				*(s + i) = numbers[j / 2];
+				if (letters[j] == *(s + i))
+					*(s + i) = numbers[j];
 			}
 		}
 	}
