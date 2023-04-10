@@ -9,10 +9,9 @@
  * @argv: array of arguments
  * Return: 0
  */
-#pragma region
 int main(int argc, char *argv[])
 {
-	int i, cents, coin_count = 0;
+	int cents;
 
 	if (argc != 2)
 	{
@@ -30,14 +29,13 @@ int main(int argc, char *argv[])
 
 	if (cents < TWENTY_FIVE_CENTS)
 	{
-		printf("%d", handle_ten_cents(cents, 0));
+		printf("%d\n", handle_ten_cents(cents, 0));
 	}
 	else
-		printf("%d", handle_25_cents(cents, 0));
+		printf("%d\n", handle_25_cents(cents, 0));
 
 	return (0);
 }
-#pragma endregion
 
 /**
  * handle_25_cents - calculates the minimum number of
@@ -76,6 +74,7 @@ int handle_25_cents(int cents, int count)
  */
 int handle_ten_cents(int cents, int count)
 {
+	int rem;
 	/*
 	 * If the money is less than 10 cents,
 	 * handle the remaining coins with handle_ten()
@@ -85,11 +84,13 @@ int handle_ten_cents(int cents, int count)
 		return (handle_five_cents(cents, count));
 	}
 
-	int rem = cents % TEN_CENTS;
+	rem = cents % TEN_CENTS;
 
 	if (rem)
 	{
-		int times = cents / TEN_CENTS;
+		int times;
+
+		times = cents / TEN_CENTS;
 
 		cents -= TEN_CENTS * times;
 		return (handle_five_cents(cents, times + count));
@@ -106,10 +107,12 @@ int handle_ten_cents(int cents, int count)
  */
 int handle_five_cents(int cents, int count)
 {
+	int rem;
+
 	if (cents < FIVE_CENTS)
 		return (handle_two_cents(cents, count));
 
-	int rem = cents % FIVE_CENTS;
+	rem = cents % FIVE_CENTS;
 
 	if (rem)
 	{
@@ -130,6 +133,8 @@ int handle_five_cents(int cents, int count)
  */
 int handle_two_cents(int cents, int count)
 {
+	int rem;
+
 	/*
 	 * if it's less than two cents,
 	 * return the amount of 1 cent coins
@@ -137,7 +142,7 @@ int handle_two_cents(int cents, int count)
 	if (cents < TWO_CENTS)
 		return ((cents / ONE_CENT) + count);
 
-	int rem = cents % TWO_CENTS;
+	rem = cents % TWO_CENTS;
 
 	if (rem)
 	{
