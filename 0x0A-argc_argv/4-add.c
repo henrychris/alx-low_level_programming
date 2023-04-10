@@ -26,6 +26,10 @@ int main(int argc, char *argv[])
 		{
 			sum += val;
 		}
+		else if (val < 0)
+		{
+			sum += 0;
+		}
 		else
 		{
 			printf("Error\n");
