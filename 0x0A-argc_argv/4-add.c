@@ -10,21 +10,20 @@
  */
 int main(int argc, char *argv[])
 {
-	int i, sum = 0;
+	int i, sum = 0, j = 0;
 
 	for (i = 1; i < argc; i++)
 	{
-		int val = atoi(argv[i]);
-
-		if (val >= 0 && !isalpha(argv[i][0]) && isdigit(val))
+		while (argv[i][j] != '\0')
 		{
-			sum += val;
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+			{
+				printf("Error\n");
+				return (1);
+			}
+			j++;
 		}
-		else
-		{
-			printf("Error\n");
-			return (1);
-		}
+		sum += atoi(argv[i]);
 	}
 	printf("%d\n", sum);
 	return (0);
