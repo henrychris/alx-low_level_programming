@@ -14,12 +14,6 @@ char *str_concat(char *s1, char *s2)
 	char *str;
 	int len = 0, j = 0, size;
 
-	size = _strlen(s1) + _strlen(s2) + 1;
-	str = malloc(size);
-	if (str == NULL)
-	{
-		return (NULL);
-	}
 	if (s1 == NULL)
 	{
 		s1 = "";
@@ -28,6 +22,14 @@ char *str_concat(char *s1, char *s2)
 	{
 		s2 = "";
 	}
+
+	size = _strlen(s1) + _strlen(s2) + 1;
+	str = malloc(size);
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+
 	/* initialize */
 	_memset(str, '\0', size);
 
