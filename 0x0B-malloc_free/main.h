@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+char *_strdup(char *str);
 int _strlen(char *s);
 char *_memset(char *s, char b, unsigned int n);
 int _putchar(char c);
