@@ -21,12 +21,7 @@ char *_strdup(char *str)
 	}
 
 	size = _strlen(str);
-	if (size == 0)
-	{
-		size = 1;
-	}
-
-	ret_str = malloc(size);
+	ret_str = malloc(size + 1);
 	if (ret_str == NULL)
 	{
 		return (NULL);
