@@ -14,7 +14,7 @@ char *str_concat(char *s1, char *s2)
 	char *str;
 	int len = 0, j = 0, size;
 
-	size = sizeof(s1) + sizeof(s2);
+	size = _strlen(s1) + _strlen(s2) + 1;
 	str = malloc(size);
 	if (str == NULL)
 	{
@@ -64,4 +64,24 @@ char *_memset(char *s, char b, unsigned int n)
 		*(s + i) = b;
 	}
 	return (s);
+}
+
+/**
+ * _strlen - calculate string length without \0
+ * @s: the array variable
+ * Return: Length of the string
+ */
+int _strlen(char *s)
+{
+	int count = 1;
+	int length = 0;
+	char c = *s;
+
+	while (c != '\0')
+	{
+		c = *(s + count);
+		count++;
+		length++;
+	}
+	return (length);
 }
