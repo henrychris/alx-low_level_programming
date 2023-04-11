@@ -23,6 +23,25 @@ char *create_array(unsigned int size, char c)
 	{
 		return (NULL);
 	}
-	str[0] = c;
+	str = _memset(str, c, size);
 	return (str);
+}
+
+/**
+ * _memset - fills memory with a constant byte
+ * @s: the array variable
+ * @b: the character to be located
+ * @n: the number of bytes to be filled
+ * Return: the number of bytes in the initial segment of s which consist only of
+ * bytes from accept
+ */
+char *_memset(char *s, char b, unsigned int n)
+{
+	int i;
+
+	for (i = 0; i < n; i++)
+	{
+		*(s + i) = b;
+	}
+	return (s);
 }
