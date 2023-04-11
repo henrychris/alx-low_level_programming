@@ -32,7 +32,8 @@ char *create_array(unsigned int size, char c)
  * @s: the array variable
  * @b: the character to be located
  * @n: the number of bytes to be filled
- * Return: the number of bytes in the initial segment of s which consist only of
+ * Return: the number of bytes in the initial
+ * segment of s which consist only of
  * bytes from accept
  */
 char *_memset(char *s, char b, unsigned int n)
