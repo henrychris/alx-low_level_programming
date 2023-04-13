@@ -2,47 +2,6 @@
 #include <stdlib.h>
 
 /**
- * _strlen - calculate string length without \0
- * @s: the array variable
- * Return: Length of the string
- */
-int _strlen(char *s)
-{
-	int count = 1;
-	int length = 0;
-	char c = *s;
-
-	while (c != '\0')
-	{
-		c = *(s + count);
-		count++;
-		length++;
-	}
-	return (length);
-}
-
-/**
- * _strcpy - copies string content into another
- * @dest: string copied to
- * @src: string being copied
- * @start: where to start copying from
- * Return: the pointer to dest
- */
-char *_strcpy(char *dest, char *src, int start)
-{
-	int i = 0;
-
-	while (*(src + i))
-	{
-		*(dest + start) = *(src + i);
-		i++;
-		start++;
-	}
-	*(dest + i + start) = '\0';
-	return (dest);
-}
-
-/**
  * string_nconcat - concatenates two strings
  * @s1: first string
  * @s2: second string
@@ -51,36 +10,38 @@ char *_strcpy(char *dest, char *src, int start)
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *str;
-	int lens1, lens2, i;
+	int i, n_count = n, count = 0, count_2 = 0;
+	char *ptr;
 
 	if (s1 == NULL)
 		s1 = "";
+	while (*(s1 + count) != '\0')
+		count++;
+
 	if (s2 == NULL)
 		s2 = "";
-
-	/* get string lengths for later */
-	lens1 = _strlen(s1);
-	lens2 = _strlen(s2);
-
-	/* 1 extra for null terminator*/
-	str = malloc(lens1 + lens2 + 1);
-	if (str == NULL)
-		return (NULL);
-	str = _strcpy(str, s1, 0);
-
-	/* reset counter */
-	i = 0;
-	if ((int) n >= lens2)
-		str = _strcpy(str, s2, lens1);
-	else
+	while (count_2 >= 0)
 	{
-		while (i < (int)n)
-		{
-			*(str + lens1 + i) = *(s2 + i);
-			i++;
-		}
-		*(str + lens1 + i) = '\0';
+		if (*(s2 + count_2) == '\0' && count_2 == n_count)
+			break;
+		else if (count_2 == n_count)
+			break;
+		count_2++;
 	}
-	return (str);
+
+	ptr = malloc(sizeof(s1[0]) * (count + count_2) + 1);
+	if (ptr != NULL)
+	{
+		for (i = 0; i < (count + count_2); i++)
+		{
+			if (i < count)
+				ptr[i] = s1[i];
+			else
+				ptr[i] = s2[i - count];
+		}
+		*(ptr + count + count_2) = '\0';
+		return (ptr);
+	}
+	else
+		return (NULL);
 }
