@@ -35,16 +35,17 @@ void print_all(const char *const format, ...)
 		case 's':
 			s = va_arg(args, char *);
 			if (s == NULL)
+			{
 				printf("(nil)");
-			else
-				printf("%s", s);
+				break;
+			}
+			printf("%s", s);
 			break;
 		default:
 			break;
 		}
-		if (format[i + 1] != '\0' &&
-			(format[i] == 'c' || format[i] == 'i' ||
-			 format[i] == 'f' || format[i] == 's'))
+		if (format[i + 1] != '\0' && (format[i] == 'c' || format[i] == 'i'
+			|| format[i] == 'f' || format[i] == 's'))
 			printf(", ");
 		i++;
 	}
