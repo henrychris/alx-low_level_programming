@@ -11,22 +11,20 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	int *arr;
-	unsigned int i;
+	void *arr;
+	unsigned int total;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
-	arr = malloc(nmemb * size);
+
+	total = nmemb * size;
+	arr = malloc(total);
 
 	if (arr == NULL)
 	{
 		return (NULL);
 	}
+	memset(arr, 0, total);
 
-	for (i = 0; i < nmemb; i++)
-	{
-		*(arr + i) = 0;
-	}
-
-	return ((void *)(arr));
+	return (arr);
 }
