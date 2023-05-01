@@ -9,6 +9,11 @@ void free_listint2(listint_t **head)
 {
 	listint_t *curr_node;
 
+	if (head == NULL)
+	{
+		return;
+	}
+
 	while (*head != NULL)
 	{
 		/* track the current */
@@ -19,7 +24,7 @@ void free_listint2(listint_t **head)
 		free(curr_node);
 	}
 
-	free(*head);
-	/* set head to null when list is empty */
-	*head = NULL;
+	/* set head to NULL */
+	head = NULL;
+	free(head);
 }
